@@ -1,1 +1,117 @@
-
+version: "2.1"
+services:
+  duplicati:
+    image: lscr.io/linuxserver/duplicati:latest
+    container_name: duplicati
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/New_York
+    volumes:
+      - /home/triiq/docker/duplicati/config:/config
+      - /mnt/backup/containers:/containersbackup
+      - /mnt/backup/configs:/configsbackup
+      - /mnt/backup/volumes:/volumesbackup
+      - /var/lib/docker/containers:/containers
+      - /home/triiq/docker/:/configs
+      - /var/lib/docker/volumes:/volumes
+    ports:
+      - 8200:8200
+    restart: unless-stopped
+    
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/New_York
+    volumes:
+      - /home/triiq/docker/jellyfin/config:/config
+      - /mnt/watch/tv:/data/tvshows
+      - /mnt/watch/movie:/data/movies
+    ports:
+      - 8096:8096
+      - 8920:8920 #optional
+      - 7359:7359/udp #optional
+      - 1900:1900/udp #optional
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+              
+  jellyseerr:
+       image: fallenbagel/jellyseerr:latest
+       container_name: jellyseerr
+       environment:
+            - LOG_LEVEL=debug
+            - TZ=Etc/New_York
+       ports:
+            - 5055:5055
+       volumes:
+            - /home/triiq/docker/jellyseer/config:/app/config
+       restart: unless-stopped
+       
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/New_York
+    volumes:
+      - /home/triiq/docker/prowlarr/config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+  
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/New_York
+    volumes:
+      - /home/triiq/docker/radarr/config:/config
+      - /mnt/watch/movie:/movies #optional
+      - /mnt/watch/downloads/done:/done #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+    
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/New_York
+    volumes:
+      - /home/triiq/docker/sab/config:/config
+      - /mnt/watch/downloads/done:/done #optional
+      - /mnt/watch/downloads/incomplete:/incomplete #optional
+    ports:
+      - 8088:8080
+    restart: unless-stopped
+    
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/New_York
+    volumes:
+      - /home/triiq/docker/sonarr/config:/config
+      - /mnt/watch/tv:/tv #optional
+      - /mnt/watch/downloads/done:/done #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  
+  

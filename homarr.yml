@@ -1,0 +1,20 @@
+version: '3'
+#---------------------------------------------------------------------#
+#     Homarr - A simple, yet powerful dashboard for your server.     #
+#---------------------------------------------------------------------#
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock # Optional, only if you want docker integration
+      - /home/triiq/docker/homarr/configs:/app/data/configs
+      - /home/triiq/docker/homarr/icons:/app/public/icons
+      - /home/triiq/docker/homarr/data:/data
+    ports:
+      - '7575:7575'

@@ -1,0 +1,22 @@
+version: '3'
+services:
+  crafty:
+    container_name: crafty_container
+    image: registry.gitlab.com/crafty-controller/crafty-4:latest
+    restart: always
+    environment:
+        - PUID=1000
+        - PGID=1000
+        - TZ=America/New_York
+    ports:
+        - "8002:8002" # HTTP
+        - "8443:8443" # HTTPS
+        - "8123:8123" # DYNMAP
+        - "19132:19132/udp" # BEDROCK
+        - "25500-25600:25500-25600" # MC SERV PORT RANGE
+    volumes:
+        - /home/triiq/docker/crafty/backups:/crafty/backups
+        - /home/triiq/docker/crafty/logs:/crafty/logs
+        - /home/triiq/docker/crafty/servers:/crafty/servers
+        - /home/triiq/docker/crafty/config:/crafty/app/config
+        - /home/triiq/docker/crafty/import:/crafty/import

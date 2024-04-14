@@ -1,0 +1,75 @@
+version: "2.1"
+services:
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /home/triiq/docker/prowlarr/config:/config
+    ports:
+      - 9696:9696
+    restart: unless-stopped
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /home/triiq/docker/radarr/config:/config
+      - /mnt/media/watch/movie:/movies #optional
+      - /mnt/media/watch/downloads/done:/done #optional
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /home/triiq/docker/sonarr/config:/config
+      - /mnt/media/watch/tv:/tv #optional
+      - /mnt/media/watch/downloads/done:/done #optional
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+
+  readarr:
+    image: lscr.io/linuxserver/readarr:develop
+    container_name: readarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /home/triiq/docker/readarr/config:/config
+      - /mnt/media/books:/books #optional
+      - /mnt/media/audiobooks:/audiobooks
+      - /mnt/media/watch/downloads/done:/done #optional
+    ports:
+      - 8787:8787
+    restart: unless-stopped
+
+  sabnzbd:
+    image: lscr.io/linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+    volumes:
+      - /home/triiq/docker/sab/config:/config
+      - /mnt/media/watch/downloads/done:/done #optional
+      - /mnt/media/watch/downloads/incomplete:/incomplete #optional
+    ports:
+      - 8088:8080
+    restart: unless-stopped

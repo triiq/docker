@@ -22,7 +22,7 @@ services:
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/radarr/config:/config
-      - /mnt/media/watch/movie:/movies #optional
+      - /mnt/media/watch/movie:/movie #optional
       - /home/triiq/docker/sabnzbd/done:/done #optional
     ports:
       - 7878:7878

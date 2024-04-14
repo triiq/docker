@@ -9,8 +9,8 @@ services:
           devices:
             - capabilities: [gpu]
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=America/New_York
       - VERSION=docker
       - NVIDIA_VISIBLE_DEVICES=all
@@ -19,6 +19,6 @@ services:
       - 32400:32400
     volumes:
       - /home/triiq/docker/plex/config:/config
-      - /home/triiq/mnt/watch/tv:/tv
-      - /home/triiq/mnt/watch/movie:/movies
+      - /mnt/media/watch/tv:/tv
+      - /mnt/media/watch/movie:/movies
     restart: unless-stopped

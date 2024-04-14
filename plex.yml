@@ -20,6 +20,7 @@ services:
       - 32400:32400
     volumes:
       - /home/triiq/docker/plex/config:/config
-      - /mnt/media/watch/tv:/tv
-      - /mnt/media/watch/movie:/movies
+      - /home/triiq/mnt/media/watch/tv:/tv
+      - /home/triiq/mnt/media/watch/movie:/movies
     restart: unless-stopped
+    runtime: nvidia

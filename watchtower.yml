@@ -6,4 +6,4 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-    command: --interval 30 name name name 
+    command: --interval 86400 sonarr prowlarr radarr readarr sabnzbd

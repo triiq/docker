@@ -1,0 +1,49 @@
+---
+version: "2.1"
+services:
+  immich:
+    image: ghcr.io/imagegenius/immich:latest
+    container_name: immich
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Etc/UTC
+      - DB_HOSTNAME=10.9.9.101
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
+      - DB_DATABASE_NAME=immich
+      - REDIS_HOSTNAME=10.9.9.101
+      - DB_PORT=5432 #optional
+      - REDIS_PORT=6379 #optional
+#      - REDIS_PASSWORD= #optional
+      - MACHINE_LEARNING_GPU_ACCELERATION=cuda#optional
+      - MACHINE_LEARNING_WORKERS=1 #optional
+      - MACHINE_LEARNING_WORKER_TIMEOUT=120 #optional
+    volumes:
+      - /home/triiq/docker/immich/config:/config
+      - /mnt/media/photo-video/new-immich:/photos
+#      - path_to_imports:/import:ro #optional
+    ports:
+      - 8880:8080
+    restart: unless-stopped
+# This container requires an external application to be run separately to be run separately.
+# By default, ports for the databases are opened, be careful when deploying it
+# Redis:
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+    container_name: redis
+# PostgreSQL 14:
+  postgres14:
+    image: tensorchord/pgvecto-rs:pg14-v0.2.0
+    ports:
+      - 5432:5432
+    container_name: postgres14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: immich
+    volumes:
+      - /home/triiq/docker/immich/postgres:/var/lib/postgresql/data
+

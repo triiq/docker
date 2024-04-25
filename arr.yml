@@ -4,8 +4,8 @@ services:
     image: lscr.io/linuxserver/prowlarr
     container_name: prowlarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/prowlarr/config:/config
@@ -17,13 +17,13 @@ services:
     image: lscr.io/linuxserver/radarr
     container_name: radarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/radarr/config:/config
       - /mnt/media/watch/movie:/movie #optional
-      - /home/triiq/docker/sabnzbd/done:/done #optional
+      - /home/triiq/docker/sab/done:/done #optional
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -32,13 +32,13 @@ services:
     image: lscr.io/linuxserver/sonarr
     container_name: sonarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/sonarr/config:/config
       - /mnt/media/watch/tv:/tv #optional
-      - /home/triiq/docker/sabnzbd/done:/done #optional
+      - /home/triiq/docker/sab/done:/done #optional
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -47,14 +47,14 @@ services:
     image: lscr.io/linuxserver/readarr:develop
     container_name: readarr
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/readarr/config:/config
       - /mnt/media/books:/books #optional
       - /mnt/media/audiobooks:/audiobooks
-      - /home/triiq/docker/sabnzbd/done:/done #optional
+      - /home/triiq/docker/sab/done:/done #optional
     ports:
       - 8787:8787
     restart: unless-stopped
@@ -63,13 +63,13 @@ services:
     image: lscr.io/linuxserver/sabnzbd:latest
     container_name: sabnzbd
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/sab/config:/config
-      - /home/triiq/docker/sabnzbd/done:/done #optional
-      - /home/triiq/docker/sabnzbd/incomplete:/incomplete #optional
+      - /home/triiq/docker/sab/done:/done #optional
+      - /home/triiq/docker/sab/incomplete:/incomplete #optional
     ports:
       - 8088:8080
     restart: unless-stopped

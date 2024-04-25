@@ -9,13 +9,13 @@ services:
           devices:
             - capabilities: [gpu]
     environment:
-      - PUID=0
-      - PGID=0
+      - PUID=1000
+      - PGID=1000
       - TZ=America/New_York
       - VERSION=docker
       - NVIDIA_VISIBLE_DEVICES=all
       - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
-      - PLEX_CLAIM:claim-ScgxEC-Kz_BPzGcevMxi
+#      - PLEX_CLAIM:
     ports:
       - 32400:32400
     volumes:

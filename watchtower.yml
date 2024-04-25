@@ -6,4 +6,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-    command: --interval 86400 sonarr prowlarr radarr readarr sabnzbd
+      command: sonarr prowlarr radarr readarr sabnzbd twingate
+      WATCHTOWER_CLEANUP: true
+      TZ: America/New_York
+      WATCHTOWER_SCHEDULE: "0 0 4 * * *"

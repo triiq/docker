@@ -10,3 +10,4 @@ services:
       WATCHTOWER_CLEANUP: true
       TZ: America/New_York
       WATCHTOWER_SCHEDULE: "0 0 4 * * *"
+    restart: unless-stopped

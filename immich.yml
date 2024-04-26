@@ -5,8 +5,8 @@ services:
     image: ghcr.io/imagegenius/immich:latest
     container_name: immich
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=America/New_York
       - DB_HOSTNAME=10.9.9.100
       - DB_USERNAME=postgres

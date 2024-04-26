@@ -7,7 +7,7 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Etc/UTC
+      - TZ=America/New_York
       - DB_HOSTNAME=10.9.9.100
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
@@ -15,10 +15,10 @@ services:
       - REDIS_HOSTNAME=10.9.9.100
       - DB_PORT=5432 #optional
       - REDIS_PORT=6379 #optional
-#      - REDIS_PASSWORD= #optional
-#      - MACHINE_LEARNING_GPU_ACCELERATION=cuda #optional
-#      - MACHINE_LEARNING_WORKERS=1 #optional
-#      - MACHINE_LEARNING_WORKER_TIMEOUT=120 #optional
+      - REDIS_PASSWORD= #optional
+      - MACHINE_LEARNING_GPU_ACCELERATION=cuda #optional
+      - MACHINE_LEARNING_WORKERS=1 #optional
+      - MACHINE_LEARNING_WORKER_TIMEOUT=120 #optional
     volumes:
       - /home/triiq/docker/immich/config:/config
       - /mnt/media/photo-video/new-immich:/photos

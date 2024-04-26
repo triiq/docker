@@ -16,9 +16,9 @@ services:
       - DB_PORT=5432 #optional
       - REDIS_PORT=6379 #optional
 #      - REDIS_PASSWORD= #optional
-      - MACHINE_LEARNING_GPU_ACCELERATION=cuda #optional
-      - MACHINE_LEARNING_WORKERS=1 #optional
-      - MACHINE_LEARNING_WORKER_TIMEOUT=120 #optional
+#      - MACHINE_LEARNING_GPU_ACCELERATION=cuda #optional
+#      - MACHINE_LEARNING_WORKERS=1 #optional
+#      - MACHINE_LEARNING_WORKER_TIMEOUT=120 #optional
     volumes:
       - /home/triiq/docker/immich/config:/config
       - /mnt/media/photo-video/new-immich:/photos

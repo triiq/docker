@@ -8,8 +8,8 @@ services:
       - 4848:4848
     volumes:
       - /home/triiq/docker/tubesync/config:/config
-      - /home/triiq/docker/tubesync/downloads:/downloads
+      - /mnt/media/watch/yt:/downloads
     environment:
       - TZ=America/New_York
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0

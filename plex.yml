@@ -22,4 +22,5 @@ services:
       - /home/triiq/docker/plex/config:/config
       - /mnt/media/watch/tv:/tv
       - /mnt/media/watch/movie:/movies
+      /mnt/media/watch/yt:/yt
     restart: unless-stopped

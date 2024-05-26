@@ -10,6 +10,6 @@ services:
       - /home/triiq/docker/tubesync/config:/config
       - /home/triiq/docker/tubesync/downloads:/downloads
     environment:
-      - TZ=Europe/New_York
+      - TZ=America/New_York
       - PUID=1000
       - PGID=1000

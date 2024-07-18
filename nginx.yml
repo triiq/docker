@@ -5,8 +5,8 @@ services:
     container_name: nginx
     restart: unless-stopped
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=0
+      - PGID=0
       - TZ=America/New_York
     ports:
       - '80:80'

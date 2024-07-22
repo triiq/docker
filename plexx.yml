@@ -1,0 +1,14 @@
+version: '2'
+services:
+  plex:
+    container_name: plex
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    environment:
+      - TZ=America/New_York
+#      - PLEX_CLAIM=<claimToken>
+    network_mode: host
+    volumes:
+      - /home/triiq/docker/plex/config:/config
+      - /home/triiq/docker/plex/trans:/transcode
+      - /mnt/media/watch:/data

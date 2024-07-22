@@ -18,4 +18,5 @@ services:
     volumes:
       - /home/triiq/docker/plex/config:/config
       - /home/triiq/docker/plex/trans:/transcode
-      - /mnt/media/watch:/data
+      - /nfs/movie:/movie
+      - /nfs/tv:/tv

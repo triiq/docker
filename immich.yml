@@ -21,7 +21,7 @@ services:
       - MACHINE_LEARNING_WORKER_TIMEOUT=120 #optional
     volumes:
       - /home/triiq/docker/immich/config:/config
-      - /mnt/media/photo-video/new-immich:/photos
+      - /nfs/photo-video/new-immich:/photos
 #      - path_to_imports:/import:ro #optional
     ports:
       - 8880:8080

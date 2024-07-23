@@ -22,7 +22,7 @@ services:
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/radarr/config:/config
-      - /mnt/media/watch/movie:/movie #optional
+      - /nfs/movie:/movie #optional
       - /home/triiq/docker/sab/done:/done #optional
     ports:
       - 7878:7878
@@ -37,27 +37,27 @@ services:
       - TZ=America/New_York
     volumes:
       - /home/triiq/docker/sonarr/config:/config
-      - /mnt/media/watch/tv:/tv #optional
+      - /nfs/tv:/tv #optional
       - /home/triiq/docker/sab/done:/done #optional
     ports:
       - 8989:8989
     restart: unless-stopped
 
-  readarr:
-    image: lscr.io/linuxserver/readarr:develop
-    container_name: readarr
-    environment:
-      - PUID=0
-      - PGID=0
-      - TZ=America/New_York
-    volumes:
-      - /home/triiq/docker/readarr/config:/config
-      - /mnt/media/books:/books #optional
-      - /mnt/media/audiobooks:/audiobooks
-      - /home/triiq/docker/sab/done:/done #optional
-    ports:
-      - 8787:8787
-    restart: unless-stopped
+  #readarr:
+  #  image: lscr.io/linuxserver/readarr:develop
+  #  container_name: readarr
+  #  environment:
+  #    - PUID=0
+  #    - PGID=0
+  #    - TZ=America/New_York
+  #  volumes:
+  #    - /home/triiq/docker/readarr/config:/config
+  #    - /mnt/media/books:/books #optional
+  #    - /mnt/media/audiobooks:/audiobooks
+  #    - /home/triiq/docker/sab/done:/done #optional
+  #  ports:
+  #    - 8787:8787
+  #  restart: unless-stopped
 
   sabnzbd:
     image: lscr.io/linuxserver/sabnzbd:latest

@@ -4,28 +4,21 @@ services:
     image: ghcr.io/open-webui/open-webui:main
     container_name: ollama-webui
     restart: unless-stopped
-    expose:
-     - 8080/tcp
-    ports:
-     - 8080:8080/tcp
     environment:
-      - OLLAMA_BASE_URL=http://host.docker.internal:11434
+      - OLLAMA_BASE_URL=http://10.9.9.101:11434
     volumes:
       - /home/triiq/docker/ollama/webui:/app/backend/data
     depends_on:
      - ollama
-
+    network_mode: host
   ollama:
     image: ollama/ollama
     container_name: ollama
     restart: unless-stopped
-    expose:
-     - 11434/tcp
-    ports:
-     - 11434:11434/tcp
     healthcheck:
       test: ollama --version || exit 1
     command: serve
+    network_mode: host
     volumes:
       - /home/triiq/docker/ollama/ollama:/root/.ollama
     deploy:

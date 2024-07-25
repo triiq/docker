@@ -1,0 +1,37 @@
+version: "3.4"
+services:
+  tdarr:
+    container_name: tdarr
+    image: ghcr.io/haveagitgat/tdarr:latest
+    restart: unless-stopped
+    network_mode: bridge
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    ports:
+      - 8265:8265 # webUI port
+      - 8266:8266 # server port
+    environment:
+      - TZ=America/New_York
+      - PUID=1000
+      - PGID=1000
+      - UMASK_SET=002
+      - serverIP=10.9.9.101
+      - serverPort=8266
+      - webUIPort=8265
+      - internalNode=true
+      - inContainer=true
+      - ffmpegVersion=6
+      - nodeName=servxl
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - /home/triiq/docker/tdarr/server:/app/server
+      - /home/triiq/docker/tdarr/config:/app/configs
+      - /home/triiq/docker/tdarr/logs:/app/logs
+      - /nfs/movie:/media/movie
+      - /nfs/tv:/media/tv
+      - /home/triiq/docker/tdarr/server:/temp
+    

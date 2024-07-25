@@ -1,0 +1,15 @@
+services:
+  tunnel_a:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-a
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+        - TUNNEL_TOKEN=eyJhIjoiMjJkMjliMTBmMzU2YTU5ODZkOWRkNDdjYTg2OTY0YjciLCJ0IjoiNTcwMjE0ZjItZTJlMy00YTI5LTg4MTEtNzU2MWY3ODcxOGRlIiwicyI6Ik1EQmhNVEl6TkRVdE1UUXhOeTAwWTJNM0xXRm1ZV010TW1VNE5HSTBaRGRpTVdNMyJ9
+  tunnel_b:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared-b
+    restart: unless-stopped
+    command: tunnel run
+    environment:
+        - TUNNEL_TOKEN=eyJhIjoiMjJkMjliMTBmMzU2YTU5ODZkOWRkNDdjYTg2OTY0YjciLCJ0IjoiNTcwMjE0ZjItZTJlMy00YTI5LTg4MTEtNzU2MWY3ODcxOGRlIiwicyI6Ik1EQmhNVEl6TkRVdE1UUXhOeTAwWTJNM0xXRm1ZV010TW1VNE5HSTBaRGRpTVdNMyJ9

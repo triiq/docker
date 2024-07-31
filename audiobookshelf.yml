@@ -1,0 +1,11 @@
+services:
+  audiobookshelf:
+    image: ghcr.io/advplyr/audiobookshelf:latest
+    ports:
+      - 13378:80
+    volumes:
+      - /nfs/read/audio:/audiobooks
+      - /home/triiq/docker/audiobookshelf/config:/config
+      - /home/triiq/docker/audiobookshelf/metadata:/metadata
+    environment:
+      - TZ=America/New_York

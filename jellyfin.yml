@@ -5,6 +5,13 @@ services:
     container_name: jellyfin
     user: 1000:1000
     network_mode: 'host'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     volumes:
       - /home/triiq/docker/jellyfin/config:/config
       - /home/triiq/docker/jellyfin/cache:/cache

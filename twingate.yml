@@ -1,1 +1,26 @@
+services:
+  twingate_connector_a:
+    container_name: miniservv-a
+    restart: always
+    image: "twingate/connector:latest"
+    environment:
+      - TWINGATE_NETWORK=triiq
+      - TWINGATE_ACCESS_TOKEN=eyJhbGciOiJFUzI1NiIsImtpZCI6IkFNdkJOY2k4VEhQYktRSk5TNGQ3MTFwd3lDeV91MEVhanhmcDBXU2FKTGMiLCJ0eXAiOiJEQVQifQ.eyJudCI6IkFOIiwiYWlkIjoiMzE5NzI3IiwiZGlkIjoiMTU3MTU0MSIsImp0aSI6ImRjY2Q4ZWMyLTVhM2UtNGM5OC05MGVlLTliZjRmM2I4MmU3NCIsImlzcyI6InR3aW5nYXRlIiwiYXVkIjoidHJpaXEiLCJleHAiOjE3MjI3Mjc4MjIsImlhdCI6MTcyMjcyNDIyMiwidmVyIjoiNCIsInRpZCI6IjE3MDg5Iiwicm53IjoxNzIyNzI0NTUwLCJybmV0aWQiOiIxMjUyNDIifQ.3PtZ50k96x51wOkq_effdn1Nstpi0dFJeDif4hPEh9cY9zkj2ZAku8-jt5NbESUc7cA7IzjVm33nvht7F2ImTg
+      - TWINGATE_REFRESH_TOKEN=4mi7ZkhVvKy6ag8t6ke6gpbcb0033V0Ao_pJNIsXC179yo1tu57elnk2kXkfJBKZjnnZ2O_eeEhIJMS2HRbIcCxMspIMT-Zma1o_Bt3LN-gHorP1Vy5O3RD5WFpshzBZRbUZvA
+      - TWINGATE_LOG_ANALYTICS=v2
+      - TWINGATE_LOG_LEVEL=3
+    sysctls:
+      net.ipv4.ping_group_range: "0 2147483647"
 
+  twingate_connector_b:
+    container_name: miniservv-b
+    restart: always
+    image: "twingate/connector:latest"
+    environment:
+      - TWINGATE_NETWORK=triiq
+      - TWINGATE_ACCESS_TOKEN=eyJhbGciOiJFUzI1NiIsImtpZCI6IkFNdkJOY2k4VEhQYktRSk5TNGQ3MTFwd3lDeV91MEVhanhmcDBXU2FKTGMiLCJ0eXAiOiJEQVQifQ.eyJudCI6IkFOIiwiYWlkIjoiMzE5NzI4IiwiZGlkIjoiMTU3MTU0MiIsImp0aSI6Ijk0YWQxYWYzLTMwYTMtNDEzZC1hNTQ3LWNiZWNiY2E5MTUyYiIsImlzcyI6InR3aW5nYXRlIiwiYXVkIjoidHJpaXEiLCJleHAiOjE3MjI3Mjc4NTEsImlhdCI6MTcyMjcyNDI1MSwidmVyIjoiNCIsInRpZCI6IjE3MDg5Iiwicm53IjoxNzIyNzI0NjI1LCJybmV0aWQiOiIxMjUyNDIifQ.eK2XIediqeCTF5E10LbnGkuaiAUNemtpWl94N0f8mZv8cj-bDdUTrR8e3AOUTJGBSuwZu26AqQKcvK6aqimRzw
+      - TWINGATE_REFRESH_TOKEN=-kaDAXkn7JoZsc1q56h514RreDsgd7mx-yowHbtjOi1qdIJfRckYdjf8fHBt0J4hjnseLUAQKm_gD72LvRuREY-EFhG-fRmdy_14qTLggWr7M5HnXb9u6UFzGhxUK20UDKB9Kw
+      - TWINGATE_LOG_ANALYTICS=v2
+      - TWINGATE_LOG_LEVEL=3
+    sysctls:
+      net.ipv4.ping_group_range: "0 2147483647"

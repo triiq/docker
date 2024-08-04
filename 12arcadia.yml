@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
     command: tunnel run
     environment:
-        - TUNNEL_TOKEN=eyJhIjoiMjJkMjliMTBmMzU2YTU5ODZkOWRkNDdjYTg2OTY0YjciLCJ0IjoiOTU0ZmE5OGEtY2U2OS00YWU0LTg5YWUtMjFlMDAzZWEwZmZkIiwicyI6Ik1HTXhZak5pTlRjdE5tSmtNUzAwTW1KakxUZzJaR1F0WlROaE1UUXpOVEkyWkRVeCJ9
+        - TUNNEL_TOKEN=yJhIjoiMjJkMjliMTBmMzU2YTU5ODZkOWRkNDdjYTg2OTY0YjciLCJ0IjoiOTU0ZmE5OGEtY2U2OS00YWU0LTg5YWUtMjFlMDAzZWEwZmZkIiwicyI6Ik1HTXhZak5pTlRjdE5tSmtNUzAwTW1KakxUZzJaR1F0WlROaE1UUXpOVEkyWkRVeCJ9
   tunnel_b:
     image: cloudflare/cloudflared:latest
     container_name: cloudflared-b
@@ -13,3 +13,5 @@ services:
     command: tunnel run
     environment:
         - TUNNEL_TOKEN=eyJhIjoiMjJkMjliMTBmMzU2YTU5ODZkOWRkNDdjYTg2OTY0YjciLCJ0IjoiOTU0ZmE5OGEtY2U2OS00YWU0LTg5YWUtMjFlMDAzZWEwZmZkIiwicyI6Ik1HTXhZak5pTlRjdE5tSmtNUzAwTW1KakxUZzJaR1F0WlROaE1UUXpOVEkyWkRVeCJ9
+
+docker run cloudflare/cloudflared:latest tunnel --no-autoupdate run --token eyJhIjoiMjJkMjliMTBmMzU2YTU5ODZkOWRkNDdjYTg2OTY0YjciLCJ0IjoiOTU0ZmE5OGEtY2U2OS00YWU0LTg5YWUtMjFlMDAzZWEwZmZkIiwicyI6Ik1HTXhZak5pTlRjdE5tSmtNUzAwTW1KakxUZzJaR1F0WlROaE1UUXpOVEkyWkRVeCJ9
